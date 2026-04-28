@@ -2,7 +2,7 @@ name: Bot Subastas BOE
 
 on:
   schedule:
-    - cron: "*/30 * * * *"  # cada 30 minutos
+    - cron: "30 8 * * *"
   workflow_dispatch:
 
 jobs:
@@ -11,10 +11,16 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: Test ntfy directo
+        run: |
+          curl -d "Prueba directa desde GitHub Actions" \
+          -H "Title: Test GitHub ntfy" \
+          https://ntfy.sh/subastas-madrid-vivienda-jorge-350k
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
