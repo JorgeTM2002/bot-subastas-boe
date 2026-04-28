@@ -15,9 +15,7 @@ jobs:
 
       - name: Test ntfy directo
         run: |
-          curl -d "Prueba directa desde GitHub Actions" \
-          -H "Title: Test GitHub ntfy" \
-          https://ntfy.sh/subastas-madrid-vivienda-jorge-350k
+          curl -d "TEST GITHUB FUNCIONANDO" https://ntfy.sh/subastas-madrid-vivienda-jorge-350k
 
       - name: Setup Python
         uses: actions/setup-python@v5
