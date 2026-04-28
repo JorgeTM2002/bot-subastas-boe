@@ -52,8 +52,10 @@ def guardar_vistas(vistas):
 
 
 def notificar(mensaje):
+    url = f"https://ntfy.sh/{NTFY_TOPIC}"
+
     r = requests.post(
-        f"https://ntfy.sh/{NTFY_TOPIC}",
+        url,
         data=mensaje.encode("utf-8"),
         headers={
             "Title": "Nueva subasta vivienda Madrid",
@@ -62,9 +64,10 @@ def notificar(mensaje):
         },
         timeout=20
     )
-    print("NTFY status:", r.status_code)
-    print("NTFY response:", r.text[:200])
 
+    print("Enviando a:", url)
+    print("NTFY status:", r.status_code)
+    print("NTFY response:", r.text)
 
 def buscar_subastas():
     r = requests.post(URL, data=DATA, timeout=30)
